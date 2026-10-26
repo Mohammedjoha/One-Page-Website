@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My One-Page Website</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is my first one-page website.</p>
+    <h2>My Photo Gallery</h2>
+
+<img src="https://picsum.photos/id/10/300/200" alt="Nature">
+<img src="https://picsum.photos/id/15/300/200" alt="Waterfall">
+<img src="https://picsum.photos/id/29/300/200" alt="Mountains">\
+
+<style>
+    .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .lightbox img {
+        max-width: 90%;
+        max-height: 80%;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
+    }
+</style>
+
+<div id="lightbox" class="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <img id="largeImage" alt="Enlarged photo">
+</div>
+
+<script>
+    const images = document.querySelectorAll("body > img");
+
+    images.forEach(image => {
+        image.style.cursor = "pointer";
+        image.onclick = function () {
+            document.getElementById("largeImage").src = this.src;
+            document.getElementById("lightbox").style.display = "flex";
+        };
+    });
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
